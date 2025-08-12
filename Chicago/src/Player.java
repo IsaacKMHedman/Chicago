@@ -1,4 +1,13 @@
-abstract class Player {
+import java.util.ArrayList;
+
+public class Player {
     
-    Card[] holdingCards;
+    private Game game;
+    private String name;
+    private ArrayList<Card> holdingCards;
+
+    public Player(String name, Game game){
+        this.name = name;
+        this.game = game;
+    }
 }

@@ -2,20 +2,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Deck {
+
     private Game game;
     private Integer[] ranks = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
     private String[] suits = {"Hearts", "Diamonds", "Clubs", "Spades"};
-    private List<Card> cards;
+    private ArrayList<Card> cards;
 
-    public Deck(Game game){
-        this.game = game;
+    public Deck(){
+        
     }
 
     public void GenerateCards(){
          for(Integer rank : ranks){
             for (String suit : suits){
                 Card a = new Card(rank, suit);
-                this.cards.add(a); 
+                this.addCards(a); 
             }
         }
         //Skriv ut genererade
@@ -23,7 +24,13 @@ public class Deck {
         for(Card c : cards) {
             System.out.println(c.getSuit()+ ", " + c.getRankName());
         }
-
+    }
+    
+    public void ShuffleDeck(){
+        System.out.println("Shuffling");
+        game.getCard().removeAll(cards);
+        System.out.println("Shuffled");
+        this.GenerateCards();
     }
 
     public Integer[] getRanks() {
@@ -46,8 +53,8 @@ public class Deck {
         return cards;
     }
 
-    public void setCards(List<Card> cards) {
-        this.cards = cards;
+    public void addCards(Card card) {
+        this.cards.add(card);
     }    
 }
 
