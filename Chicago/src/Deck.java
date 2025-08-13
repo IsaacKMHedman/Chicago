@@ -1,12 +1,13 @@
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collections;
 
 public class Deck {
-
-    private Game game;
+    
     private Integer[] ranks = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
     private String[] suits = {"Hearts", "Diamonds", "Clubs", "Spades"};
-    private ArrayList<Card> cards;
+    private ArrayList<Card> cardDeck = new ArrayList<>();
+    private ArrayList<Card> dealtCards = new ArrayList<>();
+    private ArrayList<Card> tossedCards = new ArrayList<>();
 
     public Deck(){
         
@@ -15,22 +16,34 @@ public class Deck {
     public void GenerateCards(){
          for(Integer rank : ranks){
             for (String suit : suits){
-                Card a = new Card(rank, suit);
-                this.addCards(a); 
+                this.cardDeck.add(new Card(rank, suit)); 
             }
         }
-        //Skriv ut genererade
-        System.out.println("Skriver ut alla genererade kort för att kontrollera");
-        for(Card c : cards) {
-            System.out.println(c.getSuit()+ ", " + c.getRankName());
+
+    }
+
+    public void printDeck(){
+        for(Card c : cardDeck){
+            System.out.println(c.getFullCard());
         }
     }
-    
-    public void ShuffleDeck(){
+
+    public void shuffleDeck(){
         System.out.println("Shuffling");
-        game.getCard().removeAll(cards);
-        System.out.println("Shuffled");
-        this.GenerateCards();
+        Collections.shuffle(this.cardDeck);
+        System.out.println("Shuffled cards");
+    }
+    
+    //Supposed to move the dealt card from cardDeck to dealtCards
+    public void moveCardToDealt() {
+        dealtCards.add(this.cardDeck.get(0));
+        this.cardDeck.remove(0);     
+    }
+    public void moveCardToTossed(Card c) {
+        this.tossedCards.add(c);
+        System.out.println("Tossed: " + c.getFullCard());
+        this.dealtCards.remove(c);
+        System.out.println("All tossed cards: " + tossedCards);     
     }
 
     public Integer[] getRanks() {
@@ -45,16 +58,8 @@ public class Deck {
         return suits;
     }
 
-    public void setSuits(String[] suits) {
-        this.suits = suits;
+    public ArrayList<Card> getCardDeck() {
+        return cardDeck;
     }
-
-    public List<Card> getCards() {
-        return cards;
-    }
-
-    public void addCards(Card card) {
-        this.cards.add(card);
-    }    
 }
 

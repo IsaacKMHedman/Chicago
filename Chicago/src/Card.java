@@ -35,6 +35,9 @@ public class Card {
             default: return "?";
         }
     }
+    public String getFullCard(){
+        return this.getSuit() + " " + this.getRankName();
+    }
 
     public void setRank(int rank) {
         this.rank = rank;
