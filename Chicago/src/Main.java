@@ -12,9 +12,8 @@ public class Main {
 
         game.giveCard(player2);
         game.giveCard(player1);
-    
-
 
         game.tossCard(player2, player2.getHoldingCards().get(0));
+        
     }
 }
