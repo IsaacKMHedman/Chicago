@@ -15,7 +15,7 @@ public final class Player {
         placeCard(game, this.getHoldingCards().get(i));
     }
 
-    public void placeCard(Game game, Card c){
+    private void placeCard(Game game, Card c){
         this.activePlacedCard = c;
         this.holdingCards.remove(c);
         game.placeCard(this, c);

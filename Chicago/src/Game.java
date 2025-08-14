@@ -16,15 +16,22 @@ public class Game {
         
     }
 
-    //Kan göra den här rekursiv om man skulle vilja. Tror jag. 
-    public void giveCard(Player p) {  
-        for(int i = p.getHoldingCards().size(); i < 5; i++){
-            Card c = this.deck.getCardDeck().get(0);
-            p.addHoldingCards(c);
-            this.getDeck().moveCardToDealt();
+    //Nu ger den bara de 5 "översta" varje gång, är helt OK enligt mig
+    public void giveCard() {
+        for (Player p : playersInGame){  
+           for(int i = p.getHoldingCards().size(); i < 5; i++){
+            if(this.deck.getCardDeck().size() > 0){
+               Card c = this.deck.getCardDeck().get(0);
+               p.addHoldingCards(c);
+               this.deck.moveCardToDealt();
+            }
+            else{
+                System.out.println("SLUT PÅ KORT");
+            }
         }
         p.printHoldingCardsNameToString();
     }
+}
 
     public void startNewRound(){
         Round r = new Round(this, playersInGame, playersInGame.get(0));
