@@ -19,7 +19,6 @@ public class Deck {
                 this.cardDeck.add(new Card(rank, suit)); 
             }
         }
-
     }
 
     public void printDeck(){
@@ -33,12 +32,12 @@ public class Deck {
         Collections.shuffle(this.cardDeck);
         System.out.println("Shuffled cards");
     }
-    
     //Supposed to move the dealt card from cardDeck to dealtCards
     public void moveCardToDealt() {
         dealtCards.add(this.cardDeck.get(0));
         this.cardDeck.remove(0);     
     }
+
     public void moveCardToTossed(Card c) {
         this.tossedCards.add(c);
         System.out.println("Tossed: " + c.getFullCard());

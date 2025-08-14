@@ -10,10 +10,12 @@ public class Main {
         game.addPlayer(player1);
         game.addPlayer(player2);
 
+        game.startNewRound();
         game.giveCard(player2);
         game.giveCard(player1);
 
-        game.tossCard(player2, player2.getHoldingCards().get(0));
+        //player1.tossCard(game, 0);
+        //player1.placeCard(game, 2);
         
     }
 }

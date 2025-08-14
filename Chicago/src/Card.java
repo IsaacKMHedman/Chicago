@@ -1,6 +1,6 @@
 import java.util.HashMap;
 
-public class Card {
+public final class Card {
     
     private int rank;
     private String suit;
